@@ -1,0 +1,16 @@
+{
+  "name": "brawl-bot",
+  "version": "1.0.0",
+  "description": "daily clan statistics",
+  "main": "./src/main.js",
+  "type": "module",
+  "author": "Roman <bromanla.json@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "sequelize": "^6.19.2",
+    "sqlite3": "^5.0.8",
+    "vk-io": "^4.5.2"
+  }
+}
