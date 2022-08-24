@@ -8,9 +8,11 @@ const sequelize = new Sequelize({
 
 const Players = sequelize.define('players', {
   name: { type: DataTypes.STRING },
-  trophies: { type: DataTypes.NUMBER }
+  tag: { type: DataTypes.STRING },
+  trophies: { type: DataTypes.NUMBER },
+  difference: { type: DataTypes.NUMBER }
 }, {
-  createdAt: false,
+  createdAt: true,
   updatedAt: false
 })
 

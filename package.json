@@ -6,11 +6,15 @@
   "type": "module",
   "author": "Roman <bromanla.json@gmail.com>",
   "license": "ISC",
+  "scripts": {
+    "start": "node src/main"
+  },
   "dependencies": {
     "axios": "^0.27.2",
+    "date-fns": "^2.29.1",
     "dotenv": "^16.0.1",
-    "sequelize": "^6.19.2",
-    "sqlite3": "^5.0.8",
-    "vk-io": "^4.5.2"
+    "sequelize": "^6.21.3",
+    "sqlite3": "^5.0.11",
+    "vk-io": "^4.6.0"
   }
 }

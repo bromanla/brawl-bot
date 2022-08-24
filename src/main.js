@@ -1,7 +1,9 @@
 import axios from 'axios'
-import { API, getRandomId } from 'vk-io'
-import { Players } from './sqlite.js'
+import { Op } from 'sequelize'
 import { config } from './config.js'
+import { Players } from './sqlite.js'
+import { API, getRandomId } from 'vk-io'
+import { endOfDay, startOfDay } from 'date-fns'
 
 const api = new API({ token: config.vk.token })
 
@@ -11,35 +13,77 @@ const { data } = await axios({
   headers: { Authorization: `Bearer ${config.brawl.token}` }
 })
 
-const stats = []
-const playersCache = await Players.findAll()
-const updateSql = data.items.map((player) => {
-  const cache = playersCache.find(el => el.name === player.name)
+const messageStats = []
+
+const lastRow = await Players.findOne({
+  attributes: ['createdAt'],
+  order: [
+    ['id', 'desc']
+  ]
+})
+
+const playersCache = lastRow
+  ? await Players.findAll({
+      where: {
+        createdAt: {
+          [Op.between]: [startOfDay(lastRow.createdAt), endOfDay(lastRow.createdAt)]
+        }
+      }
+    })
+  : []
+
+const insertSql = data.items.map((player) => {
+  let difference = 0
+  const cache = playersCache.find((el) => el.tag === player.tag)
 
   if (cache) {
-    const diff = player.trophies - cache.trophies
+    difference = player.trophies - cache.trophies
 
-    if (Math.abs(diff) > 0) {
-      stats.push({ name: player.name, diff })
+    if (difference !== 0) {
+      messageStats.push({ name: player.name, difference })
     }
   }
 
-  return { name: player.name, trophies: player.trophies }
+  return {
+    name: player.name,
+    tag: player.tag,
+    trophies: player.trophies,
+    difference
+  }
 })
 
-if (stats.length) {
-  const message = stats
-    .sort((a, b) => b.diff - a.diff)
+await Players.bulkCreate(insertSql)
+
+const maxDifferencePlayer = await Players.findOne({
+  order: [
+    ['difference', 'desc']
+  ]
+})
+
+const minDifferencePlayer = await Players.findOne({
+  order: [
+    ['difference', 'asc']
+  ]
+})
+
+if (messageStats.length) {
+  const statsMessage = messageStats
+    .sort((a, b) => b.difference - a.difference)
     .reduce((acc, player, index) => {
-      return acc += `${index + 1}. ${player.name} ${player.diff}\n`
+      return acc += `${index + 1}. ${player.name} ${player.difference}\n`
     }, 'Статистика за день:\n')
+
+  const recordMessage = `Рекорд: ${minDifferencePlayer.name} ${minDifferencePlayer.difference}`
+  const antiRecordMessage = `Антирекорд: ${maxDifferencePlayer.name} ${maxDifferencePlayer.difference}`
+  const message = [statsMessage, recordMessage, antiRecordMessage].join('\n')
 
   await api.messages.send({
     message,
     peer_id: config.vk.conversationId,
     random_id: getRandomId()
   })
+} else {
+  console.log('Обновлений нет')
 }
 
-await Players.destroy({ truncate: true })
-await Players.bulkCreate(updateSql)
+
