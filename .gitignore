@@ -1,8 +1,8 @@
-# compiled output
-/node_modules
-/build
+# Compiled output
+node_modules
+build
 
-# logs
+# Logs
 logs
 *.log
 npm-debug.log*
@@ -30,9 +30,11 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# enviroment
-.env*
-!.env.project
+# Enviroment
+.env
 
-# sqlite
+# Sqlite
 *.sqlite
+
+# Folder backup
+backup

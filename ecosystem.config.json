@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "BOT | Brawl",
+      "script": "npm",
+      "args": "start"
+    }
+  ]
+}
