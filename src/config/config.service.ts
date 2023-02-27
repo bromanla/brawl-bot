@@ -7,6 +7,8 @@ export class ConfigService {
   public readonly brawl: {
     token: string;
     clanTag: string;
+    recordLabel: string;
+    antiRecordLabel: string;
   };
 
   public readonly vk: {
@@ -23,12 +25,16 @@ export class ConfigService {
       VK_ADMIN: str(),
       BRAWL_CLAN_TAG: str(),
       BRAWL_TOKEN: str(),
+      BRAWL_RECORD: str({ default: 'Рекорд:' }),
+      BRAWL_ANTIRECORD: str({ default: 'Антирекорд:' }),
     });
 
     this.isDev = config.isDev;
     this.brawl = {
       token: config.BRAWL_TOKEN,
       clanTag: config.BRAWL_CLAN_TAG,
+      recordLabel: config.BRAWL_RECORD,
+      antiRecordLabel: config.BRAWL_ANTIRECORD,
     };
     this.vk = {
       token: config.VK_TOKEN,

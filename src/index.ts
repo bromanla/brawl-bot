@@ -35,8 +35,14 @@ Cron('@daily', async () => {
 
   await playerService.insert(players);
 
-  const record = await playerService.getRecordMessage('Рекорд:', 'max');
-  const antiRecord = await playerService.getRecordMessage('Антирекорд:', 'min');
+  const record = await playerService.getRecordMessage(
+    config.brawl.recordLabel,
+    'max',
+  );
+  const antiRecord = await playerService.getRecordMessage(
+    config.brawl.antiRecordLabel,
+    'min',
+  );
   const message = [stats, record, antiRecord].join('\n');
 
   await vkService.sendMessage(message);
