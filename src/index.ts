@@ -63,7 +63,7 @@ vkService.on('season', async () => {
     players,
   );
 
-  // await seasonService.create();
+  await seasonService.create();
   await vkService.sendMessage(message);
 });
 
