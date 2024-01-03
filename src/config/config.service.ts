@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { cleanEnv, str, num } from 'envalid';
 
 export class ConfigService {

@@ -52,7 +52,7 @@ export class PlayerService {
   public async getPlayersOnFirstCreatedDate(start?: Date) {
     const players = await this.brawlService.getClanMembers();
 
-    return Promise.all(
+    const cache = await Promise.all(
       players.map(async ({ tag }) => {
         const [cache] = await this.playerRepository.find({
           take: 1,
@@ -63,6 +63,8 @@ export class PlayerService {
         return cache;
       }),
     );
+
+    return cache.filter(Boolean);
   }
 
   /* Создать новые записи относительно playersCache */

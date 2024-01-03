@@ -1,7 +1,7 @@
 {
   "name": "brawl-bot",
   "type": "module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "daily clan statistics",
   "private": true,
   "author": {
@@ -11,32 +11,29 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "tsc",
-    "start": "node build/index.js",
-    "start:dev": "tsc-watch --onSuccess \"node ./build/index.js\""
+    "start": "node --env-file=.env build/index.js",
+    "start:dev": "tsc-watch --onSuccess \"node --env-file=.env --inspect build/index.js\""
   },
   "dependencies": {
-    "croner": "^5.7.0",
-    "date-fns": "^2.29.3",
-    "dotenv": "^16.0.3",
-    "envalid": "^7.3.1",
-    "got": "^12.5.3",
-    "reflect-metadata": "^0.1.13",
-    "sqlite3": "^5.1.4",
-    "typedi": "^0.10.0",
-    "typeorm": "^0.3.12",
-    "vk-io": "^4.8.1"
+    "croner": "^8.0.0",
+    "date-fns": "^3.0.6",
+    "envalid": "^8.0.0",
+    "reflect-metadata": "^0.2.1",
+    "sqlite3": "^5.1.6",
+    "typeorm": "^0.3.17",
+    "vk-io": "^4.8.3"
   },
   "devDependencies": {
-    "@types/node": "^18.14.1",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.4",
-    "rimraf": "^4.1.2",
-    "tsc-watch": "^6.0.0",
-    "typescript": "^4.9.5"
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.3.3"
   },
   "imports": {
     "#src/*": "./build/*"
