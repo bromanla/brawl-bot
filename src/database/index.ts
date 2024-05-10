@@ -2,10 +2,11 @@ import 'reflect-metadata';
 import { Player } from '#src/player/index.js';
 import { Season } from '#src/season/index.js';
 import { DataSource } from 'typeorm';
+import { join } from 'path';
 
 export const dataSource = new DataSource({
   type: 'sqlite',
-  database: 'brawl.sqlite',
+  database: join(process.cwd(), 'store', 'brawl.sqlite'),
   synchronize: process.env.NODE_ENV === 'development',
   logging: false,
   entities: [Player, Season],

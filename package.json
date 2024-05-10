@@ -9,7 +9,7 @@
     "email": "bromanla.json@gmail.com"
   },
   "scripts": {
-    "prebuild": "rimraf build",
+    "prebuild": "rm -rf build",
     "build": "tsc",
     "start": "node --env-file=.env build/index.js",
     "start:dev": "tsc-watch --onSuccess \"node --env-file=.env --inspect build/index.js\""
@@ -25,13 +25,6 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.2",
-    "prettier": "^3.1.1",
-    "rimraf": "^5.0.5",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.3.3"
   },

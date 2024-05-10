@@ -28,7 +28,7 @@ const vkService = new VkService(
 );
 
 // Ежедневное обновление статистики по cron
-Cron('@daily', async () => {
+Cron('0 5 0 * * *', async () => {
   const playersCache = await playerService.getPlayersOnLastCreatedDate();
   const players = await playerService.getStats(playersCache);
   const stats = playerService.getStatsMessage('Статистика за день:\n', players);
