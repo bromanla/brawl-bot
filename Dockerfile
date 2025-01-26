@@ -1,17 +1,5 @@
-# Builder
-FROM node:20.8.0-alpine3.17 as builder
-LABEL stage=builder
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci
-
-COPY . .
-RUN npm run build
-
 # Image
-FROM node:20.8.0-alpine3.17
+FROM node:23.5-alpine3.20
 
 WORKDIR /app
 
@@ -20,4 +8,4 @@ COPY --from=builder /app/build ./build
 
 RUN npm ci --omit=dev
 
-CMD ["npm", "start"]
+CMD ["node", "--run", "start"]

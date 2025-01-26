@@ -1,12 +1,4 @@
-interface Item {
-  tag: string;
-  name: string;
-  nameColor: string;
-  role: string;
-  trophies: number;
-  icon: { id: number };
-}
+import type { z } from 'zod';
+import type { clanMemberSchema } from './brawl.entity.ts';
 
-export interface ClanMemberReq {
-  items: Item[];
-}
+export type ClanMembers = z.infer<typeof clanMemberSchema>;

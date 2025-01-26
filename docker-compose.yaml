@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   brawl-bot:
     container_name: brawl-bot
     build: .
     volumes:
-      - /home/bromanla/brawl-bot/data:/app/store
+      - ./data/:/app/data
     env_file:
       - .env
     restart: always

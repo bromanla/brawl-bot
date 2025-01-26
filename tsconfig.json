@@ -1,26 +1,52 @@
 /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
+// {
+//   "compilerOptions": {
+//     "module": "ES2022",
+//     "moduleResolution": "node",
+//     "target": "ES2022",
+//     "removeComments": true,
+//     "outDir": "build",
+//     "baseUrl": ".",
+//     "strict": true,
+//     "allowSyntheticDefaultImports": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "emitDecoratorMetadata": true,
+//     "experimentalDecorators": true,
+//     "strictPropertyInitialization": false,
+//     "esModuleInterop": true,
+//     "paths": {
+//       "#src/*": ["src/*"]
+//     },
+//     "noEmit": true,
+//     "rewriteRelativeImportExtensions": true,
+//     "allowImportingTsExtensions": true
+//   },
+//   "include": ["src/**/*.ts", ".eslintrc.cjs"]
+// }
+
 {
   "compilerOptions": {
-    "module": "ES2022",
-    "moduleResolution": "node",
-    "target": "ES2022",
-    "removeComments": true,
-    "outDir": "build",
-    "baseUrl": ".",
-    "strict": true,
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
+    /* Base Options: */
     "esModuleInterop": true,
-    "paths": {
-      "#src/*": ["src/*"]
-    },
+    "skipLibCheck": true,
+    "target": "es2022",
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* Node Stuff */
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "module": "NodeNext",
+    "noEmit": true,
+    /* If your code doesn't run in the DOM: */
+    "lib": ["es2022"]
   },
-  "include": ["src/**/*.ts", ".eslintrc.cjs"],
-
+  "include": ["src/**/*.ts"]
 }

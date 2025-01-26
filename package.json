@@ -1,7 +1,7 @@
 {
   "name": "brawl-bot",
   "type": "module",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "daily clan statistics",
   "private": true,
   "author": {
@@ -9,26 +9,23 @@
     "email": "bromanla.json@gmail.com"
   },
   "scripts": {
-    "prebuild": "rm -rf build",
-    "build": "tsc",
-    "start": "node --env-file=.env build/index.js",
-    "start:dev": "tsc-watch --onSuccess \"node --env-file=.env --inspect build/index.js\""
+    "watch": "tsc --watch",
+    "start": "node --env-file=.env --experimental-sqlite --experimental-strip-types src/index.ts",
+    "start:dev": "node --env-file=.env --experimental-sqlite --experimental-strip-types --watch --inspect src/index.ts"
   },
   "dependencies": {
-    "croner": "^8.0.0",
-    "date-fns": "^3.0.6",
-    "envalid": "^8.0.0",
-    "reflect-metadata": "^0.2.1",
-    "sqlite3": "^5.1.6",
-    "typeorm": "^0.3.17",
-    "vk-io": "^4.8.3"
+    "croner": "^9.0.0",
+    "date-fns": "^4.1.0",
+    "vk-io": "^4.9.1",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.6",
-    "tsc-watch": "^6.0.4",
-    "typescript": "^5.3.3"
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@types/node": "^22.10.10",
+    "typescript": "^5.7.3"
   },
-  "imports": {
-    "#src/*": "./build/*"
+  "volta": {
+    "node": "23.6.0",
+    "npm": "10.9.2"
   }
 }
