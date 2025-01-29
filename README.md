@@ -38,12 +38,6 @@ This project uses the following Node.js experimental flags:
 
 ---
 
-## Logs and Messages
-
-- Daily and seasonal statistics are logged and optionally sent via VK messages.
-
----
-
 ## 🔧 Environment Variables
 
 | Variable                 | Description                                    |
