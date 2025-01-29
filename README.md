@@ -1,26 +1,26 @@
-# Brawl Stats Service
+# 🎮 Brawl Stats Service
 
 This repository contains a Node.js-based service designed for tracking and analyzing player statistics in the game Brawl Stars. The service interacts with the Brawl Stars API and uses SQLite for data storage. It is built for educational purposes, utilizing experimental features of Node.js, and is not recommended for production environments.
 
 ---
 
-## Features
+## 🌟 Features
 
-- **Daily and Seasonal Statistics:**
+- **📊 Daily and Seasonal Statistics:**
 
   - Tracks player trophies and calculates daily and seasonal differences.
   - Maintains a record of top performers and underperformers.
 
-- **Integration with VK:**
+- **🤖 Integration with VK:**
 
   - Sends updates and commands through VK messages.
 
-- **Cron Jobs:**
+- **⏰ Cron Jobs:**
   - Automates daily tasks for updating statistics.
 
 ---
 
-## Experimental Features
+## ⚠️ Experimental Features
 
 This project uses the following Node.js experimental flags:
 
@@ -31,20 +31,20 @@ This project uses the following Node.js experimental flags:
 
 ---
 
-## Usage
-
-### VK Commands
+## 📋 VK Commands
 
 - `/season`: Triggers the seasonal statistics update.
 - Additional commands can be added in `BotService`.
 
-### Logs and Messages
+---
+
+## Logs and Messages
 
 - Daily and seasonal statistics are logged and optionally sent via VK messages.
 
 ---
 
-## Environment Variables
+## 🔧 Environment Variables
 
 | Variable                 | Description                                    |
 | ------------------------ | ---------------------------------------------- |
@@ -59,7 +59,7 @@ This project uses the following Node.js experimental flags:
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```plaintext
 src/
@@ -71,4 +71,21 @@ src/
 ├── season/               # Seasonal data handling
 ├── store/                # SQLite wrapper
 └── index.ts              # Entry point
+```
+
+---
+
+## 🚀 Quick Start
+
+1. Clone repo:
+
+```bash
+git clone https://github.com/bromanla/brawl-bot.git
+cd brawl-bot
+```
+
+2. Start with Docker:
+
+```bash
+docker-compose up -d --build
 ```

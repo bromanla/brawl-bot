@@ -1,8 +1,8 @@
 {
   "name": "brawl-bot",
   "type": "module",
-  "version": "3.0.0",
-  "description": "daily clan statistics",
+  "version": "3.0.1",
+  "description": "Brawl Stars clan statistics tracker",
   "private": true,
   "author": {
     "name": "Roman",
@@ -10,8 +10,8 @@
   },
   "scripts": {
     "watch": "tsc --watch",
-    "start": "node --env-file=.env --experimental-sqlite --experimental-strip-types src/index.ts",
-    "start:dev": "node --env-file=.env --experimental-sqlite --experimental-strip-types --watch --inspect src/index.ts"
+    "start": "node --experimental-sqlite --experimental-strip-types src/index.ts",
+    "start:dev": "node --experimental-sqlite --experimental-strip-types --env-file=.env --watch --inspect src/index.ts"
   },
   "dependencies": {
     "croner": "^9.0.0",

@@ -15,7 +15,7 @@ const brawlService = new BrawlService();
 const botService = new BotService();
 const playerService = new PlayerService(playerStore);
 
-const octopus = new OctopusService(
+new OctopusService(
   brawlService,
   botService,
   playerService,
@@ -24,5 +24,3 @@ const octopus = new OctopusService(
 );
 
 botService.mount();
-
-octopus.dailyTask();

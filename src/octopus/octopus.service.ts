@@ -39,7 +39,7 @@ export class OctopusService {
       .filter(Boolean);
 
     const players = this.playerService.handleStats(clanMembers, cachePlayers);
-    // players.map(this.playerStore.create.bind(this.playerStore));
+    players.map(this.playerStore.create.bind(this.playerStore));
 
     const stats = this.playerService.getStatsMessage(
       'Statistics for the day:\n',
@@ -62,8 +62,7 @@ export class OctopusService {
 
     const message = [stats, maxRecord, minRecord].join('\n');
 
-    console.log(message);
-    // bot.sendMessage(message);
+    await this.botService.sendMessage(message);
   }
 
   public async seasonCommand() {
@@ -87,7 +86,6 @@ export class OctopusService {
 
     this.seasonStore.create();
 
-    console.log(message);
-    // bot.sendMessage(message);
+    await this.botService.sendMessage(message);
   }
 }
